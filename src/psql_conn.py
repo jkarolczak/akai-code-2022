@@ -68,7 +68,7 @@ def add_food_to_poi(food_id: int, poi_id: int, quantity: int):
         curs.execute("DELETE FROM poi_food WHERE poi_id=%(poi_id)s AND food_id=%(food_id)s",
                      {"poi_id": poi_id, "food_id": food_id})
 
-    new_quantity = max(cur_quantity + quantity, 0)
+    new_quantity = max(cur_quantity + int(quantity), 0)
 
     with conn.cursor() as curs:
         curs.execute("INSERT INTO poi_food (poi_id, food_id, quantity) VALUES(%(poi_id)s, %(food_id)s, %(quantity)s);",
