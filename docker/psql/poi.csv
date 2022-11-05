@@ -1,9 +1,9 @@
-poi_id,name,street,number,city,latitude,longitude,is_full,url
-0,Jadłodzielnia Wildecka,Rynek Wildecki,78,Poznań,52.3933527574436,16.92022963386673,0,https://www.facebook.com/jadlodzielniawildecka/
-1,Zielony Rynek,Farbiarska,17/19,Mosina,52.24571410566907,16.853200815346984,0,https://www.facebook.com/jadlodzielniamosina/
-2,Lodówka Fundacji Weź Pomóż,Droga Leśna,60,Oborniki,52.6516589235957,16.796737985035463,0,
-3,Foodsharing Poznań,Taczaka,7/16,Poznań,52.405393,16.922379,0,https://www.facebook.com/JadlodzielniaPoznan
-4,Swarzędzka Jadłodzielnia,Poznańska,25,Swarzędz,52.40629445092485,17.0688235,0,https://www.facebook.com/SwarzedzkaJadlodzielnia
-5,DobroCzynna Lodówka,Półwiejska,26,Poznań,52.402589013668475,16.92917684232927,0,https://www.facebook.com/people/DobroCzynna-Lod%C3%B3wka/100063886212385/
-6,Lodówka miejska,Towarowa,1,Kalisz,51.762150445090015,18.0820732,0,
-7,Jadłodzielnia Luboń,Źródlana,1,Luboń,52.35087227833507,16.877016686506096,0,https://mops-lubon.pl/wiadomosci/3070/jadlodzielnia
+poi_id,name,street,number,city,latitude,longitude,is_full,door_open,url
+0,Jadłodzielnia Wildecka,Rynek Wildecki,78,Poznań,52.3933527574436,16.92022963386673,0,0,https://www.facebook.com/jadlodzielniawildecka/
+1,Zielony Rynek,Farbiarska,17/19,Mosina,52.24571410566907,16.853200815346984,0,0,https://www.facebook.com/jadlodzielniamosina/
+2,Lodówka Fundacji Weź Pomóż,Droga Leśna,60,Oborniki,52.6516589235957,16.796737985035463,0,0,
+3,Foodsharing Poznań,Taczaka,7/16,Poznań,52.405393,16.922379,0,0,https://www.facebook.com/JadlodzielniaPoznan
+4,Swarzędzka Jadłodzielnia,Poznańska,25,Swarzędz,52.40629445092485,17.0688235,0,0,https://www.facebook.com/SwarzedzkaJadlodzielnia
+5,DobroCzynna Lodówka,Półwiejska,26,Poznań,52.402589013668475,16.92917684232927,0,0,https://www.facebook.com/people/DobroCzynna-Lod%C3%B3wka/100063886212385/
+6,Lodówka miejska,Towarowa,1,Kalisz,51.762150445090015,18.0820732,0,0,
+7,Jadłodzielnia Luboń,Źródlana,1,Luboń,52.35087227833507,16.877016686506096,0,0,https://mops-lubon.pl/wiadomosci/3070/jadlodzielnia
