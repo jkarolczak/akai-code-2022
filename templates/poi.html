@@ -1,5 +1,6 @@
 {% include 'head.html' %}
 {% include 'header.html' %}
+<div id="content">
 <h1>{{ name }}</h1>
 <p class="address">{{ address }}</p>
 {% if url is not none %}
@@ -11,4 +12,5 @@
     <li>{{ product[0] }}, {{product[1]}} szt.</li>
     {% endfor %}
 </ol>
+</div>
 {% include 'footer.html' %}

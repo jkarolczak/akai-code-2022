@@ -1,7 +1,8 @@
 {% include 'head.html' %}
 {% include 'header.html' %}
 <body class="admin">
-<h1>Panel administracyjny {{ name }}</h1>
+<div id="content">
+<h1>Panel administracyjny - {{ name }}</h1>
 <h2>Modyfikacja stanu produktu</h2>
 <p class="hint">Aby usunąć produkt dodaj jego ujemną ilość</p>
 <form class="admin-form" method="post">
@@ -15,5 +16,6 @@
     <input type="number" name="quantity">
     <input type="submit" value="Zatwierdź modyfikację">
 </form>
+</div>
 </body>
 {% include 'footer.html' %}
