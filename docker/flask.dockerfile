@@ -12,6 +12,7 @@ RUN apt-get update --fix-missing > /dev/null 2>& 1; \
     ca-certificates cmake curl \
     libpq-dev \
     git \
+    ffmpeg libsm6 libxext6 \
     python3 python3-pip \
     wget;
 

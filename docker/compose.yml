@@ -41,10 +41,3 @@ services:
       - './psql:/entrypoints:rw'
       - './psql/entrypoint.sql:/docker-entrypoint-initdb.d/init-db.sql'
     restart: always
-  # model:
-  #   build:
-  #     context: .
-  #     dockerfile: model.dockerfile
-  #   networks:
-  #     - net
-
