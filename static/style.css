@@ -2,3 +2,18 @@
     display:block;
     height:800px;
 }
+
+footer {
+    height: 50;
+    background-color: lightgreen;
+    border-top: 2px solid black;
+    margin-top: 15px;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    flex-shrink: 0;
+}
+
+.admin {
+    background-color: yellowgreen;
+}
