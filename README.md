@@ -1,3 +1,11 @@
+![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54)
+![PyTorch](https://img.shields.io/badge/PyTorch-%23EE4C2C.svg?style=for-the-badge&logo=PyTorch&logoColor=white)
+![Flask](https://img.shields.io/badge/flask-%23000.svg?style=for-the-badge&logo=flask&logoColor=white)
+![Docker](https://img.shields.io/badge/docker-%230db7ed.svg?style=for-the-badge&logo=docker&logoColor=white)
+![Raspberry Pi](https://img.shields.io/badge/-RaspberryPi-C51A4A?style=for-the-badge&logo=Raspberry-Pi)
+
+
+
 # Dziel i zwyciężaj (głód)
 🦕 paretodactyle
 
@@ -31,10 +39,4 @@ Nasza strona została zintegrowana z API Too Good To Go, dzięki czemu osoby w p
 Przygotowane rozwiązanie dostępne jest na stronie [http://paretodactyle.pl](http://paratodactyle.pl). Po wejściu ukaże się mapa. Po kliknięciu w pinezkę pojawią się podstawowe informacje o Jadłodzielni. Można z nich przejść do dwóch ekranów. Jeden dedykowany jest użytkownikom i zawiera informacje o zawartości lodówki. Drugi ekran pełni funkcję panelu administracyjnego.
 
 ### Demo detekcji jedzenia
-
-
-https://user-images.githubusercontent.com/81712088/200116350-d828fe12-3253-4184-9fcc-a98b5c4104e3.MOV
-
-
-
-## Stack technologiczny
+https://user-images.githubusercontent.com/82370491/200119839-9db2fa50-1fc1-48dd-9e65-28a5bac98547.MOV
