@@ -1,0 +1,25 @@
+{% include 'head.html' %}
+{% include 'header.html' %}
+<div id="content" class="row">
+    <div id="subtitle" class="row">
+        <h2 class="col-xl-12 col-lg-12 col-md-12 col-sm-6 col-6">Aplikacja do jadłodzielenia - sprawdź gdzie w okolicy możesz oddać jedzenie potrzebującym</h2>
+    </div>
+    <div id="sub_content" class="row">
+        <div id="map" align="center" class="col-xl-8 col-lg-8 col-md-12 col-sm-12 col-12"></div>
+        <script>
+            var map = L.map('map').setView([{{lat}}, {{lon}}], 10);
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {attribution: '&copy; <a href=\"https://www.openstreetmap.org/copyright\">OpenStreetMap</a> contributors'}).addTo(map);
+            {{markers|safe}}
+        </script>
+        <div id="tgtg" class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-12">
+            {% for tg in tgtg_list %}
+            <div class="tgtg-item">
+                <img src="{{ tg.image_url }}">
+                <h3>{{ tg.name }} ({{ tg.price }} zł) </h3>
+                <p>{{ tg.store }} ({{ tg.distance }} km)</p>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% include 'footer.html' %}

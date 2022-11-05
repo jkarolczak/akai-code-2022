@@ -1,0 +1,45 @@
+version: '3.8'
+
+networks:
+  net:
+    name: net-app
+
+services:
+  flask:
+    build:
+      context: .
+      dockerfile: flask.dockerfile
+    networks:
+      - net
+    volumes:
+      - ../:/akai-code:rw
+    environment:
+      PYTHONPATH: src
+      POSTGRES_USER: $POSTGRES_USER
+      POSTGRES_PASSWORD: $POSTGRES_PASSWORD
+      POSTGRES_DB: $POSTGRES_DB
+      TGTG_ACCESS_TOKEN: $TGTG_ACCESS_TOKEN
+      TGTG_REFRESH_TOKEN: $TGTG_REFRESH_TOKEN
+      TGTG_USER_ID: $TGTG_USER_ID
+    working_dir: /akai-code
+    tty: true
+    stdin_open: true
+    ports:
+      - 80:5000
+    entrypoint: python3 -m flask run -h 0.0.0.0 -p 5000
+  postgres:
+    image: postgres:10.4
+    networks:
+      net:
+        aliases:
+          - db
+    environment:
+      POSTGRES_USER: $POSTGRES_USER
+      POSTGRES_PASSWORD: $POSTGRES_PASSWORD
+      POSTGRES_DB: $POSTGRES_DB
+    ports:
+      - 5432:5432
+    volumes:
+      - './psql:/entrypoints:rw'
+      - './psql/entrypoint.sql:/docker-entrypoint-initdb.d/init-db.sql'
+    restart: always
