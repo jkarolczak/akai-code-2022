@@ -42,19 +42,18 @@ a{
 
 footer {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
-    font-size: 20px;
-    position: absolute;
-    width: 100vw;
-    height: 50;
     background-color: rgba(110, 179, 85, 0.6);
     color: #444;
+    margin-top: 15px;
+    /* position: absolute;
+    
+    height: 50;
+    
+    
     border-top: 2px solid black;
-    /* margin-top: 15px; */
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    flex-shrink: 0;
-    bottom: 0;
+    /*  */
+    /* 
+    bottom: 0;  */
 }
 
 /* .admin {
