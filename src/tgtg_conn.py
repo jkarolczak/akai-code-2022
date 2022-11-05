@@ -11,7 +11,7 @@ class TgtgItem:
     @property
     def distance(self) -> float:
         """Distance to the store from the request location"""
-        return self.info["distance"]
+        return f"{self.info['distance']:.2f}"
 
     @property
     def image_url(self) -> str:
@@ -50,7 +50,7 @@ def get_client() -> TgtgClient:
     )
 
 
-def get_items(client: TgtgClient = get_client(), latitude: float = 52.40380039307673, longitude=16.949083997974178,
+def get_items(client: TgtgClient = get_client(), latitude: float = 52.213036, longitude=21.019615,
               radius: int = 15
               ) -> List[TgtgItem]:
     raw = client.get_items(favorites_only=False, latitude=latitude, longitude=longitude, radius=radius,
