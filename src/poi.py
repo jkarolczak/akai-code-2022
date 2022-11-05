@@ -3,6 +3,7 @@ from typing import Tuple
 
 class POI:
     def __init__(self, config: Tuple) -> None:
+        print(config)
         self.id = config[0]
         self.name = config[1]
         self.address = f"{config[4]}, {config[2]} {config[3]}"

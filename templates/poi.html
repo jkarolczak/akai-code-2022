@@ -1,21 +1,23 @@
 {% include 'head.html' %}
 {% include 'header.html' %}
 <div id="content">
-<h1>{{ name }}</h1>
-<p class="address">{{ address }}</p>
-{% if url is not none %}
-<a href="{{url}}"><p class="url">Odwiedź stronę internetową jadłodzielni</p></a>
-{% endif %}
+    <div class="poi-inner">
+        <h1>{{ name }}</h1>
+        <p class="address">{{ address }}</p>
+        {% if url is not none %}
+        <a href="{{url}}"><p class="url">Odwiedź stronę internetową jadłodzielni</p></a>
+        {% endif %}
 
-{% if is_full %}
-<p class="warning">Ta jadłodzielnia obecnie jest pełna! Prosimy, udaj się do innej jadłodzielni</p>
-{% endif %}
+        {% if is_full %}
+        <p class="warning">Ta jadłodzielnia obecnie jest pełna! Prosimy, udaj się do innej jadłodzielni</p>
+        {% endif %}
 
-<h2>Dostępne produkty</h2>
-<ol>
-    {% for product in products %}
-    <li>{{ product[0] }}, {{product[1]}} szt.</li>
-    {% endfor %}
-</ol>
+        <h2>Dostępne produkty</h2>
+        <ol>
+            {% for product in products %}
+            <li>{{ product[0] }}, {{product[1]}} szt.</li>
+            {% endfor %}
+        </ol>
+    </div>
 </div>
 {% include 'footer.html' %}
