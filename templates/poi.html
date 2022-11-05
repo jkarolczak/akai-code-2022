@@ -6,6 +6,11 @@
 {% if url is not none %}
 <a href="{{url}}"><p class="url">Odwiedź stronę internetową jadłodzielni</p></a>
 {% endif %}
+
+{% if is_full %}
+<p class="warning">Ta jadłodzielnia obecnie jest pełna! Prosimy, udaj się do innej jadłodzielni</p>
+{% endif %}
+
 <h2>Dostępne produkty</h2>
 <ol>
     {% for product in products %}

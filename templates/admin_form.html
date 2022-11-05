@@ -2,8 +2,18 @@
 {% include 'header.html' %}
 <body class="admin">
 <div id="content">
-<h1>Panel administracyjny - {{ name }}</h1>
+<h1>Panel administracyjny {{ name }}</h1>
+{% if is_full %}
+<p class="warning">Lodówka jest pełna!</p>
+{% endif %}
+{% if door_open %}
+<p class="warning">Drzwi lodówki nie zostały prawidłowo zamknięte!</p>
+<a href="/admin/reset_door/{{ id }}">Zresetuj ostrzeżenie o otwartych drzwiach</a>
+{% endif %}
 <h2>Modyfikacja stanu produktu</h2>
+{% if message is not none %}
+<p class="success">{{ message }}</p>
+{% endif %}
 <p class="hint">Aby usunąć produkt dodaj jego ujemną ilość</p>
 <form class="admin-form" method="post">
     <label for="product">Rodzaj żywności</label>
@@ -16,6 +26,12 @@
     <input type="number" name="quantity">
     <input type="submit" value="Zatwierdź modyfikację">
 </form>
+<h2>Dostępne produkty</h2>
+<ol>
+    {% for product in products %}
+    <li>{{ product[0] }}, {{product[1]}} szt.</li>
+    {% endfor %}
+</ol>
 </div>
 </body>
 {% include 'footer.html' %}

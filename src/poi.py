@@ -8,8 +8,9 @@ class POI:
         self.address = f"{config[4]}, {config[2]} {config[3]}"
         self.latitude = float(config[5])
         self.longitude = float(config[6])
-        self.is_full = config[7]
-        self.url = config[8]
+        self.is_full = bool(config[7])
+        self.door_open = bool(config[8])
+        self.url = config[9]
 
     def __repr__(self):
         if self.url:

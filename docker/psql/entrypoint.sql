@@ -8,6 +8,7 @@ CREATE TABLE poi
     latitude  NUMERIC     NOT NULL,
     longitude NUMERIC     NOT NULL,
     is_full   INT         NOT NULL,
+    door_open INT         NOT NULL,
     url       VARCHAR(255)
 );
 

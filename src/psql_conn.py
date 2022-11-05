@@ -1,5 +1,6 @@
 import os
 
+import pandas as pd
 import psycopg2
 
 db_conn = None
@@ -55,6 +56,18 @@ def get_food(food_id: int):
     return name[0]
 
 
+def set_full(poi_id: int):
+    conn = get_conn()
+    with conn.cursor() as curs:
+        curs.execute("UPDATE poi SET is_full=1 WHERE poi_id=%(poi_id)s", {"poi_id": poi_id})
+
+
+def set_not_full(poi_id: int):
+    conn = get_conn()
+    with conn.cursor() as curs:
+        curs.execute("UPDATE poi SET is_full=0 WHERE poi_id=%(poi_id)s", {"poi_id": poi_id})
+
+
 def add_food_to_poi(food_id: int, poi_id: int, quantity: int):
     conn = get_conn()
     with conn.cursor() as curs:
@@ -70,6 +83,30 @@ def add_food_to_poi(food_id: int, poi_id: int, quantity: int):
 
     new_quantity = max(cur_quantity + int(quantity), 0)
 
+    if new_quantity > 50:
+        set_full(poi_id)
+    else:
+        set_not_full(poi_id)
+
     with conn.cursor() as curs:
         curs.execute("INSERT INTO poi_food (poi_id, food_id, quantity) VALUES(%(poi_id)s, %(food_id)s, %(quantity)s);",
                      {"poi_id": poi_id, "food_id": food_id, "quantity": new_quantity})
+
+
+def serve_ml_inference(poi_id: int):
+    df = pd.read_csv("./direction_result.csv", delimiter=",", names=["product", "quantity"])
+    for row in df.iterrows():
+        print(row[1])
+        add_food_to_poi(int(row[1]["product"]), poi_id, int(row[1]["quantity"]))
+
+
+def set_door_open(poi_id: int):
+    conn = get_conn()
+    with conn.cursor() as curs:
+        curs.execute("UPDATE poi SET door_open=1 WHERE poi_id=%(poi_id)s", {"poi_id": poi_id})
+
+
+def set_door_close(poi_id: int):
+    conn = get_conn()
+    with conn.cursor() as curs:
+        curs.execute("UPDATE poi SET door_open=0 WHERE poi_id=%(poi_id)s", {"poi_id": poi_id})
