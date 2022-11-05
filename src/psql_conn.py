@@ -96,7 +96,6 @@ def add_food_to_poi(food_id: int, poi_id: int, quantity: int):
 def serve_ml_inference(poi_id: int):
     df = pd.read_csv("./direction_result.csv", delimiter=",", names=["product", "quantity"])
     for row in df.iterrows():
-        print(row[1])
         add_food_to_poi(int(row[1]["product"]), poi_id, int(row[1]["quantity"]))
 
 

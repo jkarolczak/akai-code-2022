@@ -17,3 +17,5 @@ RUN apt-get update --fix-missing > /dev/null 2>& 1; \
     wget;
 
 RUN pip3 install -r /app/requirements.txt
+
+RUN mkdir /akai-code/src/ml/data/images

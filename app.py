@@ -58,7 +58,7 @@ def admin_reset_door(idx: int, methods=["GET", "POSt"]):
 
 @app.route('/rpi/recording/<id>', methods=["POST"])
 def rpi_recording(id: int):
-    list(request.files.items())[0][1].save("sources.h264")
+    list(request.files.items())[0][1].save("source.h264")
     os.system("python3 src/ml/run.py")
     serve_ml_inference(id)
     return "OK", 200
