@@ -1,6 +1,7 @@
-from flask import Flask, request, render_template
+from flask import Flask, render_template, request
 
-from geospatial import address_to_coordinates
+from poi import POI
+from psql_conn import list_pois, list_food, get_food_by_poi, get_poi
 
 app = Flask(__name__)
 app.config["DEBUG"] = True
@@ -9,17 +10,23 @@ app.config["APPLICATION_ROOT"] = "/"
 
 @app.route('/', methods=["GET", "POST"])
 def main():
-    if request.method == "POST":
-        latitude, longitude = address_to_coordinates(request.form['address'])
-        id = 0
-        markers = f"var a_{id} = L.marker([{latitude}, {longitude}]); a_{id}.addTo(map).bindPopup('<h1>{id}</h1><br>" \
-                  f"<a href=\"{request.form['address']}\">click</a>');"
-
-        return render_template('results.html', markers=markers, lat=latitude, lon=longitude)
-    else:
-        return render_template('input.html')
+    markers = " ".join([POI(r).to_marker() for r in list_pois()])
+    latitude = 52.3933527574436
+    longitude = 16.92022963386673
+    return render_template("index.html", markers=markers, lat=latitude, lon=longitude)
 
 
-@app.route('/<idx>', methods=["GET", "POST"])
-def id(idx: str):
-    return f"<h1>{idx}</h1>"
+@app.route('/poi/<idx>', methods=["GET", "POST"])
+def poi(idx: int):
+    products = get_food_by_poi(idx)
+    poi = POI(get_poi(idx))
+    return render_template("poi.html", name=poi.name, address=poi.address, url=poi.url, products=products)
+
+
+@app.route('/admin/<idx>', methods=["GET", "POST"])
+def admin(idx: int):
+    if request.method == "GET":
+        food_list = list_food
+        return render_template("admin_form.html", food_list=food_list)  # TODO: prepare template
+    elif request.method == "POST":
+        food_name = request.form.get("food_name")

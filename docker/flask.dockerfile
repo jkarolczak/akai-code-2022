@@ -10,6 +10,7 @@ RUN apt-get update --fix-missing > /dev/null 2>& 1; \
     apt-get install -y \
     build-essential bzip2 \
     ca-certificates cmake curl \
+    libpq-dev \
     git \
     python3 python3-pip \
     wget;

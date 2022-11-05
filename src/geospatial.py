@@ -1,5 +1,5 @@
 import json
-from typing import Tuple
+from typing import Tuple, Union
 
 import requests
 
@@ -8,7 +8,7 @@ def prepare_address(address: str) -> str:
     return address.replace(" ", "%20")
 
 
-def address_to_coordinates(address: str) -> Tuple[str | float, float]:
+def address_to_coordinates(address: str) -> Tuple[Union[str, float], float]:
     address = prepare_address(address)
     url = "http://api.positionstack.com/v1/forward" \
           "?access_key=cab89e3651ff9164ebd06a174026b011" \

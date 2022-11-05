@@ -1,0 +1,14 @@
+{% include 'head.html' %}
+{% include 'header.html' %}
+<h1>{{ name }}</h1>
+<p class="address">{{ address }}</p>
+{% if url is not none %}
+<a href="{{url}}"><p class="url">Odwiedź stronę internetową jadłodzielni</p></a>
+{% endif %}
+<h2>Dostępne produkty</h2>
+<ol>
+    {% for product in products %}
+    <li>{{ product[0] }}, {{product[1]}} szt.</li>
+    {% endfor %}
+</ol>
+{% include 'footer.html' %}

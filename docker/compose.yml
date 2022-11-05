@@ -1,8 +1,8 @@
-version: '3'
+version: '3.8'
 
 networks:
   net:
-    driver: host
+    name: net-app
 
 services:
   flask:
@@ -12,20 +12,35 @@ services:
     networks:
       - net
     volumes:
-      - ../flask-mnt:/akai-code:rw
-    working_dir: akai-code
+      - ../:/akai-code:rw
+    environment:
+      PYTHONPATH: src
+      POSTGRES_USER: $POSTGRES_USER
+      POSTGRES_PASSWORD: $POSTGRES_PASSWORD
+      POSTGRES_DB: $POSTGRES_DB
+    working_dir: /akai-code
     tty: true
     stdin_open: true
     ports:
       - 5000:5000
-    entrypoint: 'python3 -m flask run -p 5000'
-  # postgres:
-  #   image: postgres
-  #   networks:
-  #     - net
-  #   volumes:
-  #     - '../docker/psql:/entrypoints:rw'
-  #   entrypoint: '/bin/bash /entrypoints/entrypoint.sh'
+    entrypoint: python3 -m flask run -h 0.0.0.0 -p 5000
+  postgres:
+    image: postgres:10.4
+    networks:
+      net:
+        aliases:
+          - db
+
+    environment:
+      POSTGRES_USER: $POSTGRES_USER
+      POSTGRES_PASSWORD: $POSTGRES_PASSWORD
+      POSTGRES_DB: $POSTGRES_DB
+    ports:
+      - 5432:5432
+    volumes:
+      - './psql:/entrypoints:rw'
+      - './psql/entrypoint.sql:/docker-entrypoint-initdb.d/init-db.sql'
+    restart: always
   # model:
   #   build:
   #     context: .
